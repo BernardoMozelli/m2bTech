@@ -28,10 +28,11 @@
     text-align: center;
     align-content: center;
     color: transparent;
+    margin-left: 10px;
     background: var(--gd);
     background-clip: text;
     -webkit-background-clip: text;
-    font-size: 5rem;
+    font-size: 4rem;
     text-transform: uppercase;
     padding: 1rem;
 }
@@ -47,7 +48,7 @@
     padding: .7rem 3rem;
     margin-top: 1rem;
     margin-left: 20px;
-    background: -webkit-linear-gradient(right, #1c5560, #21d4fd, #333);
+    background: -webkit-linear-gradient(left, #1c5560, #21d4fd);
     cursor: pointer;
     font-size: 1.7rem;
     border-radius: 20px;
@@ -57,6 +58,25 @@
 .btn:hover {
     transform: scale(1.1);
     background: -webkit-linear-gradient(left, #fffafa, #1c5560, #fff);
+}
+
+.btn-form {
+    display: block;
+    margin: 0 auto;
+    font-family: "Poppins", sans-serif;
+    font-weight: 590;
+    font-size: 16.5px;
+    width: 150px;
+    padding: .7rem 3rem;
+    background: linear-gradient(90deg, #333, #21d4fd);
+    cursor: pointer;
+    border-radius: 20px;
+    color: #fff;
+}
+
+.btn-form:hover {
+    transform: scale(1.1);
+    background: -webkit-linear-gradient(right, #fffafa, #1c5560, #333);
 }
 
 html {
@@ -225,8 +245,17 @@ header .navbar a:hover {
 }
 
 .features .box-container .box h3 {
-    color: #333;
-    font-size: 2.4rem;
+    background: linear-gradient(to left, #333, #333, #1c5560, #1c5560);
+    /* Corrigido para background */
+    -webkit-background-clip: text;
+    /* Faz o fundo recortar o texto em navegadores Webkit */
+    background-clip: text;
+    /* Faz o fundo recortar o texto em outros navegadores */
+    color: transparent;
+    /* Torna o texto transparente para mostrar o gradiente */
+    font-family: "Poppins Light", sans-serif;
+    font-weight: 650;
+    font-size: 20px;
 }
 
 .features .box-container .box p {
@@ -276,8 +305,17 @@ header .navbar a:hover {
 }
 
 .quem-somos .row .content h3 {
-    color: #333;
-    font-size: 3.5rem;
+    background: linear-gradient(to right, #333, #1c5560, #fff);
+    /* Corrigido para background */
+    -webkit-background-clip: text;
+    /* Faz o fundo recortar o texto em navegadores Webkit */
+    background-clip: text;
+    /* Faz o fundo recortar o texto em outros navegadores */
+    color: transparent;
+    /* Torna o texto transparente para mostrar o gradiente */
+    font-family: "Nunito", sans-serif;
+    font-weight: 650;
+    font-size: 37px;
 }
 
 .quem-somos .row .content p {
@@ -380,52 +418,78 @@ header .navbar a:hover {
     color: #1c5560;
 }
 
-.contact form {
+.contact section ::before {
     padding: 2rem;
+    padding-top: auto;
+    width: 100%;
+    height: 60%;
     font-family: "Poppins Light";
-    font-size: 15px;
+    font-size: 16px;
+    outline: none;
+    border: 1px solid;
+    border-radius: 30px;
+    background: -webkit-linear-gradient(left, #1c5560, #333);
+    background: -o-linear-gradient(left, #1c5560, #333);
+    background: -moz-linear-gradient(left, #1c5560, #333);
+    background: linear-gradient(left, #1c5560, #333);
+    background-size: 100% 100%;
+    z-index: -1;
+    animation: gradientBorder 5s ease infinite;
+}
+
+@keyframes gradientBorder {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.contact form {
+    padding: 4rem;
+    width: 100%;
+    height: 60%;
+    font-family: "Poppins Light";
+    font-size: 16px;
     background: transparent;
     background: linear-gradient(to right, #fff, #f0f0f0);
-    border-radius: 30px;
 }
 
 .contact form .inputBox {
-    font-family: "Poppins Light";
-    font-size: 15px;
     position: relative;
-    margin-bottom: 1.5rem;
 }
 
 .contact form .inputBox input,
 .contact form .inputBox textarea {
     width: 100%;
+    margin: 4rem 0;
+    padding: 1rem 0;
+    background-color: transparent;
+    border-bottom: .2rem solid #3f779c;
     font-family: "Poppins Light";
     font-size: 15px;
-    padding: 1rem 0;
-    border: none; /* Removido para adicionar borda em pseudo-elementos */
-    border-bottom: .2rem solid rgba(25, 25, 25, .2);
-    background-color: transparent;
-    box-sizing: border-box; /* Inclui padding e border no tamanho total do elemento */
+    text-transform: none;
 }
 
 .contact form .inputBox textarea {
     resize: none;
+    position: relative;
     height: 15rem;
-    font-size: 16px;
+    margin: 4rem 0;
 }
 
 .contact form .inputBox input:focus,
 .contact form .inputBox textarea:focus {
-    border-color: #1c5560;
-}
-
-.contact form .inputBox input:focus~label,
-.contact form .inputBox textarea:focus~label,
-.contact form .inputBox input:valid~label,
-.contact form .inputBox textarea:valid~label {
-    top: -.4rem;
-    font-size: 16px; /* Ajustado para um efeito de label mais suave */
-    color: #1c5560;
+    border-color: #333;
+    margin: 5.1rem 0;
+    font-family: "Poppins Light";
+    font-size: 14.5px;
 }
 
 .contact form .inputBox label {
@@ -434,41 +498,55 @@ header .navbar a:hover {
     position: absolute;
     top: 2.3rem;
     left: 0;
-    transition: all 0.4s ease;
-    color: rgba(0, 0, 0, 0.6); /* Cor inicial do label */
 }
 
-.contact form .inputBox input:focus::before,
-.contact form .inputBox textarea:focus::before {
-    content: "";
-    display: block;
+.contact form .inputBox input:focus~label,
+.contact form .inputBox textarea:focus~label,
+.contact form .inputBox input:valid~label,
+.contact form .inputBox textarea:valid~label {
+    top: -.4rem;
+    margin: 2rem 0;
+    font-size: 15px;
+    font-family: "Poppins Light";
+    color: #1c5560;
+}
+
+.animated-form {
+    position: relative;
+    padding: 20px;
+    background-color: white;
+    border-radius: 30px;
+    width: 400px;
+    box-shadow: 0 0 15px rgba(25, 25, 25, .2);
+}
+
+.animated-form::before {
+    content: '';
     position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(to right, #21d4fd, #1b1b1b);
-    transition: width 0.4s ease;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 35px;
+    background: linear-gradient(45deg, #333, #1c5560, #21d4fd);
+    background-size: 400% 400%;
+    z-index: -1;
+    animation: gradientBorder 6s ease infinite;
 }
 
-.contact form .inputBox input:focus::before,
-.contact form .inputBox textarea:focus::before {
-    width: 100%;
-}
+@keyframes gradientBorder {
+    0% {
+        background-position: 0% 50%;
+    }
 
-.contact form .inputBox input::after,
-.contact form .inputBox textarea::after {
-    content: "";
-    display: block;
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(to right, #21d4fd, #1b1b1b);
-    transition: width 0.4s ease;
-}
+    50% {
+        background-position: 100% 50%;
+    }
 
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
 .home .content h3 {
     font-size: 4rem;
@@ -602,11 +680,11 @@ body {
 }
 
 .anima-text {
-    width: 620px;
+    width: 570px;
     position: absolute;
     /* Mudança para absolute para centralização correta */
     /* Centralização vertical */
-    right: 10%;
+    right: 1%;
     left: 50%;
     margin-bottom: 0;
     animation: anima 9s infinite linear;
@@ -624,22 +702,22 @@ body {
     }
 
     50% {
-        width: 570px;
+        width: 545px;
     }
 
     100% {
-        width: 570px;
+        width: 545px;
     }
 }
 
 .anima-text h2 {
     position: auto;
-    max-width: 560px;
+    max-width: 545px;
     margin-top: auto;
     margin-left: 10px;
     margin-right: auto;
     font-family: "Poppins Light";
-    font-size: 32px;
+    font-size: clamp(2.9em, 2.9em + 2.9vw, 3.1em);
     font-style: bold;
     align-content: center;
     color: #fff;
@@ -691,21 +769,26 @@ body {
 
 .texto-quemsomos h2 {
     justify-content: center;
+    font-family: "Poppins Light";
     font-size: 15px;
     font-style: normal;
-    color: #fff3;
+    color: #333;
 }
 
 .texto-quemsomos h3 {
     justify-content: center;
-    font-size: 15px;
+    font-family: "Poppins Light";
+    font-size: 30px;
     font-style: normal;
-    color: #fff3;
+    color: #333;
+    margin-top: 0;
 }
 
 .particle-canvas {
-    width: 100%;
-    height: 100%;
+    width: 310px;
+    height: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .footer {
@@ -716,27 +799,32 @@ body {
 
 .footer .share a {
     font-size: 3rem;
-    padding: 1rem 1rem;
+    padding: 0rem 1rem;
     color: #fff;
     background: #333;
+    background-size: auto;
     border-radius: 20px;
-    height: 40px;
+    height: 34px;
 }
 
 .footer h2 {
-    color: #fff;
-    background: #333;
-    border-radius: 10px;
-    width: 245px;
+    color: #333;
+    font-family: "Poppins Light";
+    font-weight: "800";
+    font-size: 15px;
+    width: 350px;
     text-align: center;
 }
 
 .footer h3 {
     color: #fff;
-    background: #333;
+    background-color: #333;
+    font-family: "Poppins Light";
     font-size: 13px;
-    border-radius: 10px;
-    width: 100px;
+    width: 130px;
+    font-weight: "800";
+    border-radius: 30px;
+    text-align: center;
 }
 
 .footer h2 span {
@@ -745,4 +833,73 @@ body {
     font-size: 3rem;
     font-weight: bolder;
 
+}
+
+.swal-custom {
+    width: 540px !important;
+    /* Define a largura personalizada */
+    padding: 20px;
+    /* Ajusta o padding interno */
+    height: auto;
+    font-size: 15px;
+    font-family: "Poppins Light";
+}
+
+/* Estilo para o título */
+.swal-custom-title {
+    font-size: 25px;
+    font-family: "Poppins Light";
+    /* Tamanho do título */
+    color: #333;
+    /* Cor personalizada */
+}
+
+/* CSS para o widget WhatsApp */
+
+#waurlsite {
+    right: 25px;
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    z-index: 100;
+}
+
+#waurlsite {
+    right: 25px;
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    bottom: 40px;
+    z-index: 100;
+    transition: transform 0.3s ease;
+    /* Adiciona uma transição suave ao efeito */
+}
+
+#waurlsite img {
+    width: 50px;
+    transition: width 0.3s ease;
+    /* Adiciona uma transição suave ao efeito */
+}
+
+#waurlsite:hover img {
+    width: 60px;
+    /* Aumenta o tamanho da imagem ao passar o mouse */
+}
+
+#alertWapp {
+    right: 30px;
+    visibility: hidden;
+    position: fixed;
+    width: 17px;
+    height: 17px;
+    bottom: 90px;
+    background: red;
+    z-index: 101;
+    font-size: 11px;
+    color: #fff;
+    text-align: center;
+    border-radius: 50px;
+    font-weight: bold;
+    line-height: normal;
 }
