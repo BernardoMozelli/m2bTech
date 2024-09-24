@@ -740,12 +740,8 @@ body {
     /* Simplifica a centralização horizontal */
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
-    background: linear-gradient(90deg, #f0f0f0, #fff);
-    /* Gradiente com cores claras */
-    -webkit-background-clip: text;
-    /* Aplica o gradiente ao texto */
-    -webkit-text-fill-color: transparent;
-    /* Faz o texto transparente para que o gradiente apareça */
+    color: #fff;
+    background: transparent;
     line-height: 1.5;
     white-space: normal;
     overflow: hidden;
