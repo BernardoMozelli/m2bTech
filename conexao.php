@@ -52,6 +52,7 @@ if ($nome && $email && $telefone && $mensagem) {
             echo "<script>
                 msg_alertSucess();
             </script>";
+            require './mail.php';  // Chama o script para enviar o e-mail
         } else {
             include("index.html");
             echo "<script>
@@ -65,6 +66,11 @@ if ($nome && $email && $telefone && $mensagem) {
         $stmt->bind_param('ssss', $nome, $email, $telefone, $mensagem);
 
         if ($stmt->execute()) {
+            // Chama o script Python e passa as variáveis
+            $command = escapeshellcmd("python3 mail.py " . escapeshellarg($nome) . " " . escapeshellarg($email) . " " . escapeshellarg($telefone) . " " . escapeshellarg($mensagem));
+            $output = shell_exec($command);
+
+            echo $output; // Exibe a saída do script Python
             include("index.html");
             echo "<script>
                 msg_alertSucess();
@@ -79,7 +85,7 @@ if ($nome && $email && $telefone && $mensagem) {
     $stmt->close();
 } else {
     echo "<script>
-        msg_alerErrorvalid();
+        msg_alertErrorvalid();
     </script>";
 }
 
